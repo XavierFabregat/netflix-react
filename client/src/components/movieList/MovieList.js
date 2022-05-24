@@ -1,18 +1,27 @@
 import Movie from "../Movie/Movie";
 import './MovieList.css'
 
-function MovieList ({ movies }) {
+function MovieList ({ movies, title, setWishlistMovies, wishlist }) {
+
   return (
     <div>
-      <h1>Discover</h1>
-      <ul>
-        {movies.map((movie) => {
-          return <li><Movie
-          title = {movie.title}
-          image = {`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
-          /></li>
-        })}
-      </ul>
+      {!movies.length ? (
+        <h2>No movies added!</h2>
+      ) : (
+      <div>
+        <h1>{title}</h1>
+        <ul>
+          {movies.map((movie) => {
+            return <li><Movie
+            movie = {movie}
+            key = {movie.id}
+            setWishlistMovies={setWishlistMovies}
+            currentState = {wishlist}
+            /></li>
+          })}
+        </ul>
+      </div>
+      )}
     </div>
   )
 }

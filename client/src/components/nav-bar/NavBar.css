@@ -7,5 +7,29 @@
 }
 
 .nav img {
+  align-self: center;
   width: 5%;
+  height: 3vh;
+}
+
+.nav button img {
+  margin-right: 10%;
+  width: 30%;
+}
+
+.nav button {
+  display: flex;
+  font-size: large;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+
+}
+
+.nav button p {
+  color: #D91921;
+}
+
+button:hover {
+  cursor: pointer;
 }

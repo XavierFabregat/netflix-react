@@ -25,8 +25,8 @@
   left: 80%;
 }
 
-
 .toggleWishList {
+  display: none;
   background-color: transparent;
   border: none;
 }
@@ -35,3 +35,16 @@
   cursor: pointer;
 }
 
+
+.movie:hover .details .toggleWishList {
+  display: block;
+}
+
+.movie:hover {
+  transform: scale(1.1);
+  box-shadow: 10px 10px 10px rgb(47, 47, 47);
+}
+
+.movie{
+  transition: transform 200ms ease-in-out;
+}

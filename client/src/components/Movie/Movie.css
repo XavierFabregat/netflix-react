@@ -1,0 +1,37 @@
+.movie {
+  position: relative;
+  margin: 1vh 1vw;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  -webkit-user-drag: none;
+}
+
+.movie h5 {
+  background-color: rgba(0, 0, 0, 0.425);
+  padding: 1%;
+  border-radius: 3px;
+  color: white;
+  position: absolute;
+  top: 67%;
+  left: 5%;
+}
+
+.details {
+  position: absolute;
+  top: 80%;
+  left: 80%;
+}
+
+
+.toggleWishList {
+  background-color: transparent;
+  border: none;
+}
+
+.toggleWishList img {
+  cursor: pointer;
+}
+

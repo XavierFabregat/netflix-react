@@ -1,0 +1,11 @@
+.nav {
+  display: flex;
+  max-width: 100%;
+  justify-content: space-between;
+  padding: 1%;
+  background-color: black;
+}
+
+.nav img {
+  width: 5%;
+}

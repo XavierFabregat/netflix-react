@@ -71,7 +71,7 @@ function NavBar ({ setSelectedGenre }) {
           <p>Search</p>
         </button>
         {
-        searchMovies.length && 
+        searchMovies.length && isSearchVisible && 
         <ul>
           {searchMovies.map((movie) => {
             return <li>{movie.title}</li>

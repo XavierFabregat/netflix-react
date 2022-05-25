@@ -121,7 +121,7 @@ nav .search {
 
 nav .search ul {
   padding: 0;
-  width: auto;
+  width: 300%;
   position: absolute;
   background: linear-gradient(to right, #D91921 0%, #393939 100%);
   top: 100%;

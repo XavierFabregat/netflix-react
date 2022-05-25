@@ -1,0 +1,17 @@
+.star-rating button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: xx-large;
+}
+.off {
+  color: #000;
+}
+.on {
+  color: #ccc;
+}
+
+.userStar {
+  margin: 0;
+}

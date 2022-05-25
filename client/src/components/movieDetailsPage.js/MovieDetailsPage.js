@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import './movieDetailsPage.css'
 import Rating from "../rating/rating";
+import UserRating from "../userRating/UserRating";
 
 function MovieDetailsPage ({wishlistMovies, setWishlistMovies}) {
   const [movie, setMovie] = useState('');
   const [movieIsInMyList, setMovieIsInMyList] = useState('');
 
   const { id } = useParams();
+
+
 
 
   useEffect(() => {
@@ -90,7 +93,18 @@ function MovieDetailsPage ({wishlistMovies, setWishlistMovies}) {
               })}
             </ul>
           </div>
-          <Rating rating={movie.vote_average}/>
+          <div className="ratings">
+            <div className="popularRating">
+              <span className="popularRatignSpan">Popular Rating: </span>
+              <div className="ratingElementWrapper">
+                <Rating rating={movie.vote_average}/>
+              </div>
+            </div>
+            <div className="userRating">
+              <span className="userrRatignSpan">Your Rating: </span>
+              <UserRating id={movie.id}></UserRating>
+            </div>
+          </div>
         </div>
       </div>
       <div className="descripion">

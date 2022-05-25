@@ -76,3 +76,24 @@
   width: 30%;
   align-self: flex-end;
 }
+
+.popularRating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.popularRating span {
+  margin-right: 5%;
+}
+
+.userRating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userRating span {
+  margin-right: 5%;
+}
+

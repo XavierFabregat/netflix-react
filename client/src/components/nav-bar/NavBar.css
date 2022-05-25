@@ -1,4 +1,10 @@
-.nav {
+:root {
+  --select-border: #393939;
+  --select-focus: #101484;
+  --select-arrow: var(--select-border);
+}
+
+nav {
   display: flex;
   max-width: 100%;
   justify-content: space-between;
@@ -6,30 +12,138 @@
   background-color: black;
 }
 
-.nav img {
+nav img {
   align-self: center;
   width: 5%;
   height: 3vh;
 }
 
-.nav button img {
+nav button img {
   margin-right: 10%;
   width: 30%;
 }
 
-.nav button {
+nav button {
   display: flex;
   font-size: large;
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-
 }
 
-.nav button p {
+nav button p {
   color: #D91921;
 }
 
 button:hover {
   cursor: pointer;
+}
+
+#genre {
+  background-color:#97191d;
+  position: absolute;
+  top: 25%;
+  left: 130%;
+
+}
+
+.hidden {
+  display: none;
+}
+
+.categories {
+  position: relative;
+}
+
+select {
+  /* styles reset, including removing the default dropdown arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+
+  /* // Stack above custom arrow */
+  z-index: 1;
+
+  /* // Remove focus outline, will add on alternate element */
+  outline: none;
+}
+
+select {
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background: linear-gradient(to right, #D91921 0%, #393939 100%);
+}
+
+option {
+  background-color: linear-gradient(to right, #D91921 0%, #393939 100%);
+}
+
+
+.search {
+  position: relative;
+}
+
+input {
+  position: absolute;
+  top: 25%;
+  left: -200%;
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  background: linear-gradient(to right, #D91921 0%, #393939 100%);
+}
+
+nav .search {
+  position: relative;
+}
+
+nav .search ul {
+  padding: 0;
+  width: auto;
+  position: absolute;
+  background: linear-gradient(to right, #D91921 0%, #393939 100%);
+  top: 100%;
+  left: -200%;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+nav .search ul li {
+  padding: 1% 0;
+  width: 100%;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+nav .search ul li:hover {
+  padding: 1% 0;
+  width: 100%;
+  border-bottom: 1px solid black;
+  font-size: larger;
+  background-color: #cac5c51e;
 }

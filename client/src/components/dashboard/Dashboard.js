@@ -2,17 +2,18 @@ import MovieList from "../movieList/MovieList";
 import { useEffect, useState } from "react";
 import './Dashboard.css'
 
-function Dashboard () {
+function Dashboard ({ selectedGenre }) {
   const [discoveryMovies, setDiscoveryMovie] = useState([]);
   const [wishlistMovies, setWishlistMovies] = useState([]);
-  const [actionMovies, setActionMovie] = useState([]);
+  const [genreMovie, setGenreMovie] = useState([]);
 
   useEffect(() => {
     requestDiscoveryMovies();
-    requestActionMovies();
     requestWishlist();
   }, []);
-
+  useEffect(() => {
+    requestGenreMovies(selectedGenre.split(',')[0]);
+  }, [selectedGenre]);
 
   async function requestDiscoveryMovies() {
     const result = await fetch(
@@ -22,12 +23,12 @@ function Dashboard () {
     setDiscoveryMovie(json);
   }
 
-  async function requestActionMovies() {
+  async function requestGenreMovies(id) {
     const result = await fetch(
-     'https://movied.herokuapp.com/categories/28'
+     `https://movied.herokuapp.com/categories/${id}`
     );
     const json = await result.json();
-    setActionMovie(json);
+    setGenreMovie(json);
   }
 
   async function requestWishlist() {
@@ -42,7 +43,7 @@ function Dashboard () {
     <div className="dashboard">
       <MovieList movies={wishlistMovies} wishlist={wishlistMovies} title="My List" setWishlistMovies={setWishlistMovies} key="1"></MovieList>
       <MovieList movies={discoveryMovies} wishlist={wishlistMovies} title="Discover" setWishlistMovies={setWishlistMovies} key="2"></MovieList>
-      <MovieList movies={actionMovies} wishlist={wishlistMovies} title="Action" setWishlistMovies={setWishlistMovies} key="3"></MovieList>
+      <MovieList movies={genreMovie} wishlist={wishlistMovies} title={selectedGenre.split(',')[1]} setWishlistMovies={setWishlistMovies} key="3"></MovieList>
     </div>
   )
 }

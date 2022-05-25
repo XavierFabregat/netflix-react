@@ -43,6 +43,7 @@
 .movie:hover {
   transform: scale(1.1);
   box-shadow: 10px 10px 10px rgb(47, 47, 47);
+  z-index: 1;
 }
 
 .movie{

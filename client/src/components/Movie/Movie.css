@@ -21,13 +21,12 @@
 
 .details {
   position: absolute;
-  top: 80%;
+  top: 78%;
   left: 80%;
 }
 
 .toggleWishList {
   display: none;
-  background-color: transparent;
   border: none;
 }
 
@@ -37,7 +36,10 @@
 
 
 .movie:hover .details .toggleWishList {
-  display: block;
+  display: flex;
+  padding: 3px;
+  background-color: rgba(0, 0, 0, 0.425);
+  border-radius: 3px;
 }
 
 .movie:hover {

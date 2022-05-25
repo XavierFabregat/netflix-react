@@ -1,6 +1,7 @@
 import add from '../../assets/btn-add.svg'
 import remove from '../../assets/btn-added.svg'
 import './Movie.css'
+import { Link } from 'react-router-dom'
 
 
 const Movie = ({ movie, setWishlistMovies, currentState }) => {
@@ -32,8 +33,10 @@ const Movie = ({ movie, setWishlistMovies, currentState }) => {
   
   return (
     <div className='movie'>
-      <img src={`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`} alt="movie-poster" draggable="false"/>
-      <h5>{movie.title}</h5>
+      <Link to={`${movie.id}`}>
+        <img src={`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`} alt="movie-poster" draggable="false"/>
+        <h5>{movie.title}</h5>
+      </Link>
       <div className="details">
         <button className="toggleWishList" onClick={() => setWishlistMovies((prevState) => {
           toggleMovie()

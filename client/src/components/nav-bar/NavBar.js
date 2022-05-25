@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import useClickOutside from '../../hooks/useClickOutside';
-import logo from '../../assets/netflix-logo.png';
+import logo from '../../assets/Fakeflix_logo.png';
 import search from '../../assets/search-icon.svg';
 import menu from '../../assets/menu-icon.svg';
 import './NavBar.css'

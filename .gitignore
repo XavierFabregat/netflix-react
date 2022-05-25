@@ -29,3 +29,8 @@ node_modules
 # Custom
 private
 dist
+
+
+# dotenv environment variables file
+.env
+.env.test

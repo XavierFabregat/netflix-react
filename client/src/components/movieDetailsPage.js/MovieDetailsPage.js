@@ -45,11 +45,14 @@ function MovieDetailsPage ({wishlistMovies, setWishlistMovies}) {
   }
 
   function toggleMovie() {
+    const movieIndex = wishlistMovies.findIndex(el => el.id === movie.id);
     if (movieIsInMyList) {
+      wishlistMovies = [...wishlistMovies.slice(0,movieIndex),...wishlistMovies.slice(movieIndex+1)];
       setMovieIsInMyList(false);
       deleteMovie(movie);
     }
     else {
+      wishlistMovies = [movie,...wishlistMovies]
       addMovie(movie);
       setMovieIsInMyList(true);
     }

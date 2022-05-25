@@ -4,16 +4,16 @@ import './Movie.css'
 import { Link } from 'react-router-dom'
 
 
-const Movie = ({ movie, setWishlistMovies, currentState }) => {
+const Movie = ({ movie, setWishlistMovies, wishlist }) => {
 
   const deleteMovie = (movie) => {
-     fetch('http://localhost:5050/movie',{
-              method: 'DELETE',
-              headers: {
-                'Content-type': 'application/json'
-              },
-              body: JSON.stringify(movie),
-            });
+    fetch('http://localhost:5050/movie',{
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(movie),
+    });
   }
   const addMovie = (movie) => {
     fetch('http://localhost:5050/movie',{
@@ -26,7 +26,7 @@ const Movie = ({ movie, setWishlistMovies, currentState }) => {
   }
 
   function toggleMovie() {
-    const movieIndex = currentState.findIndex(el => el.id === movie.id);
+    const movieIndex = wishlist.findIndex(el => el.id === movie.id);
     if (movieIndex !== -1) deleteMovie(movie);
     else addMovie(movie);
   }
@@ -42,15 +42,15 @@ const Movie = ({ movie, setWishlistMovies, currentState }) => {
           toggleMovie()
           const movieIndex = prevState.findIndex(el => el.id === movie.id);
           if (movieIndex !== -1)  {
-            currentState = [...prevState.slice(0,movieIndex),...prevState.slice(movieIndex+1)];
-            return currentState;
+            wishlist = [...prevState.slice(0,movieIndex),...prevState.slice(movieIndex+1)];
+            return wishlist;
           }
           else {
-            currentState = [...prevState, movie]
-            return currentState
+            wishlist = [movie,...prevState]
+            return wishlist
           }
         })}>
-          {currentState && <img src={currentState.some(el => el.id === movie.id) ? remove : add} alt ="add-to-my-list"/>}
+          {wishlist && <img src={wishlist.some(el => el.id === movie.id) ? remove : add} alt ="add-to-my-list"/>}
         </button>
       </div>
     </div>

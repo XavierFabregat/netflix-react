@@ -65,4 +65,14 @@
   justify-self: stretch;
   width: 50%;
   color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.descripion .toggleWishlist {
+  padding: 3%;
+  border-radius: 10px;
+  background-color: #D91921;
+  width: 30%;
+  align-self: flex-end;
 }

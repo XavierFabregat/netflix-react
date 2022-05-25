@@ -3,15 +3,19 @@ import { useParams } from "react-router-dom";
 import './movieDetailsPage.css'
 import Rating from "../rating/rating";
 
-function MovieDetailsPage () {
+function MovieDetailsPage ({wishlistMovies, setWishlistMovies}) {
   const [movie, setMovie] = useState('');
+  const [movieIsInMyList, setMovieIsInMyList] = useState('');
 
   const { id } = useParams();
 
 
   useEffect(() => {
     getMovie(id);
+    getIsMovieInMyList(id);
   }, [id]); 
+
+  
 
   async function getMovie(id) {
     const result = await fetch(`
@@ -19,6 +23,46 @@ function MovieDetailsPage () {
     `);
     const json = await result.json();
     setMovie(json);
+  }
+
+  const deleteMovie = (movie) => {
+    fetch('http://localhost:5050/movie',{
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(movie),
+    });
+  }
+  const addMovie = (movie) => {
+    fetch('http://localhost:5050/movie',{
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(movie),
+    });
+  }
+
+  function toggleMovie() {
+    if (movieIsInMyList) {
+      setMovieIsInMyList(false);
+      deleteMovie(movie);
+    }
+    else {
+      addMovie(movie);
+      setMovieIsInMyList(true);
+    }
+  }
+
+  async function getIsMovieInMyList(id) {
+    const result = await fetch(`http://localhost:5050/movie/${id}`);
+    const json = await result.json();
+    if (json.length) {
+      setMovieIsInMyList(true);
+    } else {
+      setMovieIsInMyList(false);
+    }
   }
 
   return (
@@ -50,7 +94,10 @@ function MovieDetailsPage () {
         </div>
       </div>
       <div className="descripion">
-        <p>{movie.overview}</p>
+        <p>{movie.overview}</p> 
+          {movieIsInMyList
+            ? <button className="toggleWishlist" onClick={() => setWishlistMovies(() => toggleMovie())}>Remove From My List</button>
+            : <button className="toggleWishlist" onClick={() => setWishlistMovies(() => toggleMovie())}>Add To My List</button>}
       </div>
     </div>
   )

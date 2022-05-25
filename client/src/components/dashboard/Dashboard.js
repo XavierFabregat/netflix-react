@@ -2,15 +2,20 @@ import MovieList from "../movieList/MovieList";
 import { useEffect, useState } from "react";
 import './Dashboard.css'
 
-function Dashboard ({ selectedGenre }) {
+function Dashboard ({ selectedGenre, wishlistMovies, setWishlistMovies }) {
   const [discoveryMovies, setDiscoveryMovie] = useState([]);
-  const [wishlistMovies, setWishlistMovies] = useState([]);
   const [genreMovie, setGenreMovie] = useState([]);
 
   useEffect(() => {
     requestDiscoveryMovies();
-    requestWishlist();
   }, []);
+  
+  useEffect(() => {   
+    if (!wishlistMovies) {
+      requestWishlist();
+    }
+  }, [wishlistMovies]); //eslint-disable-line
+
   useEffect(() => {
     requestGenreMovies(selectedGenre.split(',')[0]);
   }, [selectedGenre]);
@@ -40,6 +45,7 @@ function Dashboard ({ selectedGenre }) {
   }
 
   return (
+    wishlistMovies && 
     <div className="dashboard">
       <MovieList movies={wishlistMovies} wishlist={wishlistMovies} title="My List" setWishlistMovies={setWishlistMovies} key="1"></MovieList>
       <MovieList movies={discoveryMovies} wishlist={wishlistMovies} title="Discover" setWishlistMovies={setWishlistMovies} key="2"></MovieList>

@@ -6,7 +6,9 @@ function MovieList ({ movies, title, setWishlistMovies, wishlist }) {
   return (
     <div>
       {!movies.length ? (
-        <h2>No movies added!</h2>
+        <div className="noMovies">
+          <h2>No movies added!</h2>
+        </div>
       ) : (
       <div>
         <h1>{title}</h1>
@@ -17,7 +19,7 @@ function MovieList ({ movies, title, setWishlistMovies, wishlist }) {
                 movie = {movie}
                 key = {movie.id}
                 setWishlistMovies={setWishlistMovies}
-                currentState = {wishlist}
+                wishlist = {wishlist}
                 />
             </li>)
           })}

@@ -37,3 +37,7 @@ ul::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background-color: rgba(169, 169, 169, 0);
 }
+
+.noMovies {
+  padding: 6.25% 0;
+}

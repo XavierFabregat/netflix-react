@@ -1,0 +1,9 @@
+.rating {
+  margin-top: 10%;
+  align-self: center;
+  display: flex;
+}
+
+.star {
+  margin: 5px;
+}

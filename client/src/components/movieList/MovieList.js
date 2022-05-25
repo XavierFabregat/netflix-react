@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Movie from "../Movie/Movie";
 import './MovieList.css'
 
@@ -12,12 +13,16 @@ function MovieList ({ movies, title, setWishlistMovies, wishlist }) {
         <h1>{title}</h1>
         <ul>
           {movies.map((movie) => {
-            return <li><Movie
-            movie = {movie}
-            key = {movie.id}
-            setWishlistMovies={setWishlistMovies}
-            currentState = {wishlist}
-            /></li>
+            return (<li>
+              <Link to={`/${movie.id}`}>
+                <Movie
+                movie = {movie}
+                key = {movie.id}
+                setWishlistMovies={setWishlistMovies}
+                currentState = {wishlist}
+                />
+              </Link>
+            </li>)
           })}
         </ul>
       </div>

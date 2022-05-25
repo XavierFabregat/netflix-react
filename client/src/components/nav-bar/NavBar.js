@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import useClickOutside from '../../hooks/useClickOutside';
 import logo from '../../assets/netflix-logo.png';
 import search from '../../assets/search-icon.svg';
 import menu from '../../assets/menu-icon.svg';
@@ -24,8 +26,9 @@ function NavBar ({ setSelectedGenre }) {
     setIsGenreVisible(false);
     setIsSearchVisible(!isSearchVisible);
   }
-
+  
   function handleChange (event) {
+    console.log(event.target.value);
     setSelectedGenre(event.target.value);
   }
 
@@ -50,6 +53,12 @@ function NavBar ({ setSelectedGenre }) {
     setGenres(json);
   }
 
+  const searchDropdown = useRef(null);
+  useClickOutside(searchDropdown, () => {
+    setIsSearchVisible(false);
+  })
+
+
   return (
     <nav className='nav'>
       <div className='categories'>
@@ -63,8 +72,10 @@ function NavBar ({ setSelectedGenre }) {
           })}
         </select >
       </div>
-      <img src={logo} alt="netflix-logo"/>
-      <div className='search'>
+      <Link to='/'>
+        <img src={logo} alt="netflix-logo"/>
+      </Link>
+      <div className='search' ref={searchDropdown}>
         <input type='text' className={isSearchVisible ? '' : 'hidden'} onChange={handleSearchInput}/>
         <button onClick={handleSearchButton}>
           <img src={search} alt="search-icon" />
@@ -72,9 +83,9 @@ function NavBar ({ setSelectedGenre }) {
         </button>
         {
         searchMovies.length && isSearchVisible && 
-        <ul>
+        <ul >
           {searchMovies.map((movie) => {
-            return <li>{movie.title}</li>
+            return <li><Link to={`${movie.id}`}>{movie.title}</Link></li>
           })}
         </ul>
         }

@@ -13,14 +13,22 @@ nav {
 }
 
 nav img {
+  margin-top: 20%;
   align-self: center;
-  width: 5%;
+  width: 100%;
   height: 3vh;
 }
 
 nav button img {
   margin-right: 10%;
   width: 30%;
+  align-self: center;
+}
+
+nav button p {
+  margin: 0;
+  padding: 0;
+  align-self: center;
 }
 
 nav button {
@@ -53,6 +61,10 @@ button:hover {
 
 .categories {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
 select {
@@ -117,6 +129,10 @@ input {
 
 nav .search {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 nav .search ul {
@@ -146,4 +162,14 @@ nav .search ul li:hover {
   border-bottom: 1px solid black;
   font-size: larger;
   background-color: #cac5c51e;
+}
+
+ul a {
+  text-decoration: none;
+  color: black;
+}
+
+ul a:visited {
+  text-decoration: none;
+  color: black;
 }

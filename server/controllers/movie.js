@@ -24,6 +24,17 @@ async function getMovies(req,res) {
   }
 }
 
+async function getOneMovie(req,res) {
+  try {
+    const movie = await movieModels.find({ 'id': req.params['id']});
+    res.status(200);
+    res.send(movie);
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+  }
+}
+
 async function deleteMovie(req,res) {
   try {
     const movieToDel = await movieModels.deleteOne({ 'id': req.body.id });
@@ -39,4 +50,5 @@ module.exports = {
   postMovie,
   getMovies,
   deleteMovie,
+  getOneMovie
 }

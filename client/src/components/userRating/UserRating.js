@@ -15,7 +15,7 @@ const UserRating = ({ id }) => {
   }, []); //eslint-disable-line
 
   async function getRating(id) {
-    const result = await fetch(`http://localhost:5050/rating/${id}`);
+    const result = await fetch(`https://fakeflix-react.herokuapp.com/rating/${id}`);
     const rating = await result.json();
     if (rating && rating.length) {
       setRating(rating[0].rating);
@@ -23,12 +23,12 @@ const UserRating = ({ id }) => {
   }
 
   async function postRating(id, rating) {
-    const formerRating = await fetch(`http://localhost:5050/rating/${id}`);
+    const formerRating = await fetch(`https://fakeflix-react.herokuapp.com/rating/${id}`);
     const formerRatingJson = await formerRating.json();
 
     if (formerRatingJson && !formerRatingJson.length) {
       let body = {movie_id: id, rating: rating }
-      fetch('http://localhost:5050/rating',{
+      fetch('https://fakeflix-react.herokuapp.com/rating',{
         method: 'POST',
         headers: {
           'Content-type': 'application/json'
@@ -37,7 +37,7 @@ const UserRating = ({ id }) => {
       });
     } else {
         let body = {movie_id: id, rating: rating }
-        fetch('http://localhost:5050/rating',{
+        fetch('https://fakeflix-react.herokuapp.com/rating',{
         method: 'PATCH',
         headers: {
           'Content-type': 'application/json'

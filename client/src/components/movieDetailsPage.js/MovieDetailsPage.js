@@ -29,7 +29,7 @@ function MovieDetailsPage ({wishlistMovies, setWishlistMovies}) {
   }
 
   const deleteMovie = (movie) => {
-    fetch('http://localhost:5050/movie',{
+    fetch('https://fakeflix-react.herokuapp.com/movie',{
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json'
@@ -38,7 +38,7 @@ function MovieDetailsPage ({wishlistMovies, setWishlistMovies}) {
     });
   }
   const addMovie = (movie) => {
-    fetch('http://localhost:5050/movie',{
+    fetch('https://fakeflix-react.herokuapp.com/movie',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -59,7 +59,7 @@ function MovieDetailsPage ({wishlistMovies, setWishlistMovies}) {
   }
 
   async function getIsMovieInMyList(id) {
-    const result = await fetch(`http://localhost:5050/movie/${id}`);
+    const result = await fetch(`https://fakeflix-react.herokuapp.com/movie/${id}`);
     const json = await result.json();
     if (json.length) {
       setMovieIsInMyList(true);

@@ -15,7 +15,7 @@ function App() {
 
   async function requestWishlist() {
     const result = await fetch(
-      'http://localhost:5050/movie'
+      'https://fakeflix-react.herokuapp.com/movie'
     );
     const json = await result.json();
     setWishlistMovies(json);

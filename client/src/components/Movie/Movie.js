@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Movie = ({ movie, setWishlistMovies, wishlist }) => {
 
   const deleteMovie = (movie) => {
-    fetch('http://localhost:5050/movie',{
+    fetch('https://fakeflix-react.herokuapp.com/movie',{
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json'
@@ -16,7 +16,7 @@ const Movie = ({ movie, setWishlistMovies, wishlist }) => {
     });
   }
   const addMovie = (movie) => {
-    fetch('http://localhost:5050/movie',{
+    fetch('https://fakeflix-react.herokuapp.com/movie',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
